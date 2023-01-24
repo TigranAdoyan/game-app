@@ -1,0 +1,54 @@
+#durak_game_ui_container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.actions_panel_container {
+  position: absolute;
+  bottom: -30px;
+  width: 350px;
+  height: 40px;
+  left: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(-50%);
+}
+
+.actions_panel_button {
+  width: 120px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #FEFEFE;
+  font-size: 13px;
+  background-color: #7F167F;
+  transition: .1s;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  margin: 0 10px;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+  &:hover {
+    transition: .1s;
+    background-color: #460C68;
+    cursor: pointer;
+    box-shadow: 0 0 23px 11px rgba(127, 22, 127, .75);
+    -webkit-box-shadow: 0 0 23px 11px rgba(127, 22, 127, .75);
+    -moz-box-shadow: 0 0 23px 11px rgba(127, 22, 127, .75);
+  }
+  &:active {
+    width: 138px;
+    height: 48px;
+    transition: none;
+  }
+}
+
+.actions_panel_button_disabled {
+  background-color: #7F167F;
+}

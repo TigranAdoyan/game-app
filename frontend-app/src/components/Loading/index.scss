@@ -1,0 +1,13 @@
+.loading_container {
+  animation: rotation 1s infinite linear;
+  animation-name: rotate_loading_icon_animation;
+}
+
+@keyframes rotate_loading_icon_animation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}

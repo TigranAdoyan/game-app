@@ -1,0 +1,131 @@
+.poker_modal_container {
+  background-color: rgb(0, 0, 0, .8);
+  padding: 20px 20px;
+  border-radius: 30px;
+  display: flex;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  .poker_modal {
+    height: 300px;
+    width: 400px;
+    left: 50%;
+    top: 10%;
+    transform: translateX(-50%);
+    background-color: #232323;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+    position: absolute;
+    font-family: MM Armen;
+    font-style: Normal;
+    font-size: 15px;
+    line-height: 32px;
+    text-align: center;
+    vertical-align: center;
+    color: #FFFFFF;
+  }
+  .poker_modal_header {
+    display: flex;
+    position: relative;
+    height: 80px;
+    align-items: start;
+    .poker_modal_header_info {
+      display: flex;
+      align-items: start;
+      flex-direction: column;
+      span {
+        font-size: 15px;
+        line-height: 20px;
+        width: 100%;
+        text-align: left;
+        border-bottom: 1px solid #FEFEFE;
+      }
+    }
+  }
+  .poker_modal_form_container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-bottom: 10px;
+  }
+  .poker_modal_textarea {
+    width: 360px;
+    height: 120px;
+    padding: 10px;
+    line-height: 16px;
+    color: #FEFEFE;
+    background-color: #6F6F6F;
+    font-size: 16px;
+    resize: none;
+    border-radius: 5px;
+    letter-spacing: 2px;
+    &:focus {
+      border: none;
+      outline: none;
+    }
+  }
+  .poker_modal_error_span {
+    color: red;
+    font-size: 12px;
+    padding-left: 10px;
+  }
+  .poker_modal_btn {
+    background-color: #317433;
+    border-radius: 5px;
+    letter-spacing: 2px;
+    transition: .3s;
+    &:hover {
+      cursor: pointer;
+      // background-color: #2B3D2C;
+      background-color: #153F16;
+      transition: .3s;
+    }
+  }
+  &.show {
+    .poker_modal {
+      animation-name: poker_modal_show_animation;
+      animation-duration: .4s;
+      animation-fill-mode:forwards
+    }
+  }
+  &.hide {
+    .poker_modal {
+      animation-name: poker_modal_hide_animation;
+      animation-duration: .2s;
+      animation-fill-mode:forwards
+    }
+  }
+}
+
+@keyframes poker_modal_show_animation {
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+  70% {
+    top: calc(10% + 20px);
+    opacity: .8;
+  }
+  100% {
+    top: 10%;
+    opacity: 1;
+  }
+}
+
+@keyframes poker_modal_hide_animation {
+  0% {
+    top: 10%;
+    opacity: 1;
+  }
+  100% {
+    top: 0;
+    opacity: 0;
+    display: none;
+  }
+}

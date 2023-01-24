@@ -1,0 +1,4 @@
+frontend-app/.env
+game-server/.env
+rest_api-server/.env
+socket-server/.env

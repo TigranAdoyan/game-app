@@ -1,0 +1,29 @@
+{
+  "name": "socket-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "launch_socket_server": "nodemon src/index.js",
+    "test_socket_server": "node src/test_client.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@socket.io/cluster-adapter": "^0.2.1",
+    "@socket.io/redis-adapter": "^8.0.0",
+    "@socket.io/sticky": "^1.0.2",
+    "colyseus": "^0.14.24",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "ioredis": "^5.2.4",
+    "jsonwebtoken": "^8.5.1",
+    "nats": "^2.9.2",
+    "nodemon": "^2.0.20",
+    "redis": "^4.5.1",
+    "socket.io": "^4.5.4",
+    "socket.io-client": "^4.5.4",
+    "winston": "^3.8.2"
+  }
+}
