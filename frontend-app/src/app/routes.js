@@ -5,6 +5,7 @@ import MainPage from '../pages/Main';
 import DurakGame from '../pages/DurakGame';
 import ChessGame from '../pages/ChessGame';
 import PokerMain from '../pages/PokerMain';
+import React from "react";
 
 const routes = [
    {

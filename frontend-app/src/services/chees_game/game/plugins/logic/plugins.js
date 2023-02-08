@@ -1,48 +1,60 @@
-import { figures, playersColors } from '../../constants';
-import {move} from "formik";
+import {figures, players, playersDict} from '../../constants';
+import { getFigureInfo } from '../../helpers';
 
 class Validator {
-    constructor(game) {
-       this.game = game;
+    constructor(logic) {
+        this.logic = logic;
     }
 
-    isFigureChecked(cell) {
-        this._getFigureAccessibleCells(cell);
+    getFigureAccessibleCells(key) {
+        if (playersDict[key[3]] !== this.logic.state.myColor) return null;
+        return this._getFigureMoveVariants(key);
     }
 
-    _getFigureAccessibleCells(cell) {
-        const moveVariants = this._getFigureMoveVariants(cell);
-        console.log("moveVariants: ", moveVariants)
+    _getFigureMoveVariants(key) {
+        const {col, raw, figure, player} = getFigureInfo(key);
+        return this[`_get_${figure}_moveVariants`](col, raw, player);
     }
 
-    _getFigureMoveVariants(cell) {
-        let [col, raw] = cell.split('');
-        raw = +raw;
-        switch (this.game.state.figures[this.game.state.myColor][cell]) {
-            case figures.pawn: {
-                  const m = this.game.state.myColor === 'white' ? 1 : -1;
-                  const arrToCheck = [`${col}${+raw + m}`];
-                  if (m === 1 && raw === 2) {
-                      arrToCheck.push(`${col}${raw + m + 1}`)
-                  } else if (m === -1 && raw === 6) {
-                      arrToCheck.push(`${col}${raw + m - 1}`)
-                  }
-                console.log("arrToCheck: ", arrToCheck);
-                return this._isEmpty(arrToCheck);
-            }
-            default: {
-                return null;
+    _get_pawn_moveVariants(col, raw, player) {
+        const mvs = [];
+        if (player === players.white) {
+            const nC = {
+                col,
+                raw: raw + 1
+            };
+            if (this._isCellEmpty(nC.col, nC.raw)) {
+                mvs.push(nC);
+                if (+nC.raw === 3) {
+                    const nC1 = {
+                        col,
+                        raw: nC.raw + 1
+                    };
+                    if (this._isCellEmpty(nC1)) mvs.push(nC1);
+                }
             }
         }
+        else if (player === players.black) {
+            const nC = {
+                col,
+                raw: raw - 1
+            };
+            if (this._isCellEmpty(nC.col, nC.raw)) {
+                mvs.push(nC);
+                if (+nC.raw === 6) {
+                    const nC1 = {
+                        col,
+                        raw: nC.raw - 1
+                    };
+                    if (this._isCellEmpty(nC1)) mvs.push(nC1);
+                }
+            }
+        }
+        return mvs;
     }
 
-    _isEmpty(cells) {
-        for (const cell of cells) {
-           if (this.game.state.figures[playersColors.white][cell] || this.game.state.figures[playersColors.black][cell]) {
-               return false;
-           }
-        }
-        return true;
+    _isCellEmpty(col, raw) {
+        return !this.logic.state.figures.find(cell => cell.substring(0, 2) === [col, raw].join());
     }
 }
 

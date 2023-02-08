@@ -1,47 +1,23 @@
-const posDict = {
-    col: {
-        'A': 0,
-        'B': 1,
-        'C': 2,
-        'D': 3,
-        'E': 4,
-        'F': 5,
-        'G': 6,
-        'H': 7,
-    },
-    raw: {
-        8: 0,
-        7: 1,
-        6: 2,
-        5: 3,
-        4: 4,
-        3: 5,
-        2: 6,
-        1: 7,
-    },
+const colValDict = {
+    'A': 1,
+    'B': 2,
+    'C': 3,
+    'D': 4,
+    'E': 5,
+    'F': 6,
+    'G': 7,
+    'H': 8,
 };
 
-const posDictRev = {
-    col: {
-        0: 'A',
-        1: 'B',
-        2: 'C',
-        3: 'D',
-        4: 'E',
-        5: 'F',
-        6: 'G',
-        7: 'H',
-    },
-    raw: {
-        0: 8,
-        1: 7,
-        2: 6,
-        3: 5,
-        4: 4,
-        5: 3,
-        6: 2,
-        7: 1,
-    },
+const colValDictRev = {
+    1: 'A',
+    2: 'B',
+    3: 'C',
+    4: 'D',
+    5: 'E',
+    6: 'F',
+    7: 'G',
+    8: 'H',
 };
 
 const gameStatues = {
@@ -49,55 +25,56 @@ const gameStatues = {
     playing: 'playing',
 };
 
-const newGameState =  {
+const newGameState = {
     status: gameStatues.waiting,
     turnPlayer: 'white',
     myColor: 'white',
     selectedFigure: null,
-    figures: {
-        white: {
-            "A1": "rook",
-            "B1": "knight",
-            "C1": "bishop",
-            "D1": "queen",
-            "E1": "king",
-            "F1": "bishop",
-            "G1": "knight",
-            "H1": "rook",
-            "A2": "pawn",
-            "B2": "pawn",
-            "C2": "pawn",
-            "D2": "pawn",
-            "E2": "pawn",
-            "F2": "pawn",
-            "G2": "pawn",
-            "H2": "pawn",
-        },
-        black: {
-            "A8": "rook",
-            "H8": "rook",
-            "B8": "knight",
-            "G8": "knight",
-            "C8": "bishop",
-            "F8": "bishop",
-            "D8": "queen",
-            "E8": "king",
-            "A7": "pawn",
-            "B7": "pawn",
-            "C7": "pawn",
-            "D7": "pawn",
-            "E7": "pawn",
-            "F7": "pawn",
-            "G7": "pawn",
-            "H7": "pawn",
-        },
-    },
+    figures: [
+        "A1RW",
+        "B1kW",
+        "C1BW",
+        "D1QW",
+        "E1KW",
+        "F1BW",
+        "G1kW",
+        "H1RW",
+        "A2PW",
+        "B2PW",
+        "C2PW",
+        "D2PW",
+        "E2PW",
+        "F2PW",
+        "G2PW",
+        "H2PW",
+        "A7RB",
+        "B7kB",
+        "C7BB",
+        "D7KB",
+        "E7QB",
+        "F7BB",
+        "G7kB",
+        "H7RB",
+        "A8PB",
+        "B8PB",
+        "C8PB",
+        "D8PB",
+        "E8PB",
+        "F8PB",
+        "G8PB",
+        "H8PB",
+    ],
 };
 
-const playersColors = {
+const players = {
     white: 'white',
     black: 'black'
 }
+
+const playersDict = {
+    "W": players.white,
+    "B": players.black
+};
 
 const figures = {
     "rook": "rook",
@@ -108,11 +85,28 @@ const figures = {
     "pawn": "pawn",
 };
 
+const figuresDict = {
+    "R": figures.rook,
+    "k": figures.knight,
+    "B": figures.bishop,
+    "Q": figures.queen,
+    "K": figures.king,
+    "P": figures.pawn,
+};
+
+const events = {
+  check_figure: "check_figure",
+  move_figure: "move_figure",
+};
+
 export {
-    posDict,
-    posDictRev,
+    colValDict,
+    colValDictRev,
     newGameState,
     gameStatues,
     figures,
-    playersColors
+    players,
+    playersDict,
+    figuresDict,
+    events
 }
